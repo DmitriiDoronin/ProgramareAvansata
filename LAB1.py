@@ -90,6 +90,8 @@ calculators.append(calculator)
 menu = "1.Add Calculator\n2.Delete calculator\n3.Edit calculator\n4.Sort by price\n5.Print Data"
 k = 1
 i = 0
+def byPrice_key(calculators):
+    return calculators.price
 while 1:
     print(menu)
     selector = int(input('Select option\n'))
@@ -104,18 +106,7 @@ while 1:
         name = input("name")
         Calculator.EditCalculator(model, name, )
     if selector == 4:
-        if k == 1:
-            selector = 4
-            while i < len(calculators)-2:
-                i += 1
-                if calculators[i].price > calculators[i+1].price:
-                    swap = calculators[i].price
-                    calculators[i].price = calculators[i+1].price
-                    calculators[i+1].price = swap
-                    k = 1
-                    i = 0
-                else :
-                    k = 0
+       calculators.sort(key = byPrice_key)
     if selector == 5:
         for i in range(len(calculators)- 1):
             print("ID = ")
